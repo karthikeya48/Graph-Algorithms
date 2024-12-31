@@ -1,0 +1,14 @@
+
+Kosarju works only in directed graph.
+  
+To find : The number of the strongly connected components and color them up.
+Strongly connected component :  The subset of vertices were there is an direct path between these nodes.
+
+Main idea behind the algorithm: 
+
+Consider topo-ordering of an graph.
+
+if 1 -> 2 -> 3 -> 4 is an topo order then it means that 1 should come before 2 in the dfs traversal.
+
+if 2 is the parent of 1 and 2 is not in front of 1 in the topo order then there is an cyclic path between 1 and 2, which says the both  1 and 2 are of part of the single SCC.
+The reverse adjacency list is formed to find the parent of the node.
