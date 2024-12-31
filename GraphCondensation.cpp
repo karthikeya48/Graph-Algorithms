@@ -13,10 +13,8 @@ signed main() {
     vector<int> value(n + 1, 0);
 
     for(int i = 1; i <= n; i++) cin >> value[i];
-
-
+    
     vector<vector<int>> adj(n + 1), radj(n + 1), cadj(n + 1);
-
 
     for(int i = 0; i < m; i++) {
         int u, v; cin >> u >> v;
@@ -54,7 +52,7 @@ signed main() {
             if(colors[child] != colors[i]) cadj[colors[i]].push_back(colors[child]);
         }
     }
-  
+    
     vector<int> sccvalue(n + 1, 0), dp(n + 1, -1);
 
     for(int i = 1; i <= n; i++) sccvalue[colors[i]] += value[i];
@@ -67,6 +65,9 @@ signed main() {
         }
         return dp[node];
     };
-
-    cout << f(1, f) << endl;
+    
+    int ans = 0;
+    for(int i = 1; i <= n; i++) ans = max(ans, f(i, f));
+    
+    cout << ans << endl;
 }   
